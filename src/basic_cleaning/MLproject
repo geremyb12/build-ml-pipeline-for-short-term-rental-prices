@@ -1,0 +1,33 @@
+name: basic_cleaning
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+
+      input_artifact:
+        description: Name of the input artifact containing the raw dataset.
+        type: string
+
+      output_artifact:
+        description: Name for the output artifact containing the cleaned dataset.
+        type: string
+
+      output_type:
+        description: Type for the output artifact.
+        type: string
+
+      output_description:
+        description: Description for the output artifact.
+        type: string
+
+      min_price:
+        description: Minimum price to consider for outliers removal.
+        type: string
+
+      max_price:
+        description: Maximum price to consider for outliers removal.
+        type: string
+
+    command: >-
+        python run.py --input_artifact {input_artifact} --output_artifact {output_artifact} --output_type {output_type} --output_description {output_description} --min_price {min_price} --max_price {max_price}
