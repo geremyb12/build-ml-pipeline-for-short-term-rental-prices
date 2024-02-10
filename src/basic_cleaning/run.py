@@ -29,6 +29,9 @@ def go(args):
     # Drop outliers based on min_price and max_price
     df = df[(df["price"] >= args.min_price) & (df["price"] <= args.max_price)]
 
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    df = df[idx].copy()
+
     # Save the cleaned data to CSV
     logger.info("Saving cleaned data to CSV...")
     df.to_csv("clean_sample.csv", index=False)
